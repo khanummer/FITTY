@@ -1,0 +1,44 @@
+* {
+    color: hotpink;
+    background-color: black;
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    font-size: 20px;
+    font-family: 'Major Mono Display', monospace;
+
+}
+
+a {
+    text-decoration: none;
+}
+
+
+/* unvisited link
+a:link {
+    color: red;
+  }
+   */
+  /* visited link */
+  /* a:visited {
+ 
+  } */
+  
+  /* mouse over link */
+  a:hover {
+    color: hotpink;
+  }
+
+  button {
+    color: hotpink;  
+    background-color: black;
+    border:  1px solid hotpink;
+  }
+
+  button:hover {
+    border: 1px solid antiquewhite;
+    background-color: hotpink;
+    color: black;
+  }

@@ -2,6 +2,9 @@
 <html>
   <head>
     <title> </title>
+    <link href="https://fonts.googleapis.com/css?family=Major+Mono+Display" rel="stylesheet">
+    <link rel="stylesheet" href="/../css/style.css">
+
   </head>
   <body>
         <h1> <%= outfit.name %> </h1>
@@ -11,13 +14,13 @@
     <%= outfit.shoe %><br>
     <%= outfit.accessory %><br>
     
-    <a href="/outfits/<%=outfit._id%>/edit"><button>edit <%= outfit.name %></button></a><br>
+    <br><a href="/outfits/<%=outfit._id%>/edit"><button>edit <%= outfit.name %></button></a><br>
     
     <form action="/outfits/<%=outfit._id%>?_method=DELETE" method="POST">
         <button type="submit">delete <%= outfit.name %> </button>
     </form>
     
-    <a href="/outfits"><button>outfits index</button></a><br>
+    <br><a href="/outfits"><button>outfits index</button></a><br>
     <a href="/"><button>home</button></a><br>
 
   </body>
