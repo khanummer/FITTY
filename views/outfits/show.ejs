@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> </title>
+  </head>
+  <body>
+        <h1> <%= outfit.name %> </h1>
+    
+    <%= outfit.top %><br>
+    <%= outfit.bottom %><br>
+    <%= outfit.shoe %><br>
+    <%= outfit.accessory %><br>
+    
+    <a href="/outfits/<%=outfit._id%>/edit"><button>edit <%= outfit.name %></button></a><br>
+    
+    <form action="/outfits/<%=outfit._id%>?_method=DELETE" method="POST">
+        <button type="submit">delete <%= outfit.name %> </button>
+    </form>
+    
+    <a href="/outfits"><button>outfits index</button></a><br>
+    <a href="/"><button>home</button></a><br>
+
+  </body>
+</html>

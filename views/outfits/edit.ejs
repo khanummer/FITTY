@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+  <header>
+    <h1>edit <%= outfit.name %></h1>
+    <nav>
+      <ul>
+        <li><a href="/">home</a></li>
+        <li><a href="/outfits">outfit index</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <form action="/outfits/<%=outfit._id%>?_method=PUT" method="POST">
+      name<br><input type="text" name="name" value="<%=outfit.name%>"><br>
+      top<br><input type="text" name="top" value="<%=outfit.top%>"><br>
+      bottom<br><input type="text" name="bottom" value="<%=outfit.bottom%>"><br>
+      shoe<br><input type="text" name="shoe" value="<%=outfit.shoe%>"><br>
+      accessory<br><input type="text" name="accessory" value="<%=outfit.accessory%>"><br>
+      <button type="submit">update outfit</button>
+    </form>
+  </main>
+</body>
+</html>

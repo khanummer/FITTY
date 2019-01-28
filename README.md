@@ -1,1 +1,25 @@
 # FITTY
+
+WELCOME TO THE FITTY APP 
+
+FITTY 
+
+FITTY
+
+FITTY
+
+F
+
+I
+
+T
+
+T
+
+Y
+
+FITTY
+
+FITTY
+
+FITTY

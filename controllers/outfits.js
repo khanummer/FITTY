@@ -37,5 +37,58 @@ router.post('/', async (req, res) => {
     }
 });
 
+// show route
+router.get('/:id', async (req, res) => {
+    try {
+        const foundOutfit = await Outfit.findById(req.params.id);
+        res.render('outfits/show.ejs', {
+            outfit: foundOutfit
+        })
+    } catch (err) {
+        res.send(err);
+        console.log(err);
+    }
+});
+
+// edit get route
+router.get('/:id/edit', async (req, res) => {
+    try {
+        const foundOutfit = await Outfit.findById(req.params.id);
+        res.render('outfits/edit.ejs', {
+            outfit: foundOutfit
+        })
+    } catch (err) {
+        res.send(err);
+        console.log(err);
+    }
+});
+
+// edit post route
+router.put('/:id', async (req, res) => {
+    try {
+        const createdOutfit = await Outfit.findByIdAndUpdate(req.params.id, req.body, {new: true});
+        res.redirect('/outfits');
+    } catch (err) {
+        res.send(err);
+        console.log(err);
+    }
+});
+
+// delete route
+router.delete('/:id', async (req, res) => {
+   const deletedOutfit = await Outfit.findByIdAndRemove(req.params.id);
+   res.redirect('/outfits');
+})
+
+
+
+
+
+
+
+
+
+
+
 
 module.exports = router;
