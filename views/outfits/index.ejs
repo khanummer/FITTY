@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> </title>
+  </head>
+  <body>
+        <h1>outfit index</h1>
+       <a href="/"><button>home</button></a><br>
+       <a href="outfits/new"><button>create new outfit</button></a>
+        <ul>
+             <% for (let i = 0; i < outfit.length; i++) { %>    
+            <li>       
+                    <a href="/outfits/<%=outfit[i]._id%>"><%=outfit[i].name%> </a>
+                    
+                <% } %>
+            </li>
+            
+        </ul>
+  </body>
+</html>
