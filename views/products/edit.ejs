@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <link href="https://fonts.googleapis.com/css?family=Major+Mono+Display" rel="stylesheet">
+  <link rel="stylesheet" href="/../css/style.css">
+
+</head>
+<body>
+    <h1>edit <%= product.brand %> <%= product.type %> </h1>
+
+    <form action="/products/<%=product._id%>?_method=PUT" method="POST">
+      brand<br><input type="text" name="brand" value="<%=product.brand%>"><br>
+      type<br><input type="text" name="type" value="<%=product.type%>"><br>
+      color<br><input type="text" name="color" value="<%=product.color%>"><br>
+      image<br><input type="text" name="image" value="<%=product.image%>"><br>
+      <button type="submit">update product</button>
+    </form>
+
+    </body>
+</html>

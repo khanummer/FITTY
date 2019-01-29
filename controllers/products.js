@@ -1,13 +1,13 @@
 const express = require('express');
 const router = express.Router();
-const Outfit = require('../models/outfits');
-
+const Product = require('../models/products');
+const User = require('../models/users');
 // index route
 router.get('/', async (req, res) => {
     try {
-        const allOutfits = await Outfit.find({});
-        res.render('outfits/index.ejs', {
-            outfit: allOutfits
+        const allProducts = await Product.find({});
+        res.render('products/index.ejs', {
+            product: allProducts
         })
     } catch (err) {
         res.send(err);
@@ -19,7 +19,7 @@ router.get('/', async (req, res) => {
 // new route
 router.get('/new', async (req, res) => {
     try {
-        res.render('outfits/new.ejs')
+        res.render('products/new.ejs')
     } catch (err) {
         res.send(err);
         console.log(err);
@@ -29,8 +29,12 @@ router.get('/new', async (req, res) => {
 // create route
 router.post('/', async (req, res) => {
     try {
-        const createdOutfit = await Outfit.create(req.body);
-        res.redirect('/outfits');
+        const findUser = User.findById(req.body.userId);
+        const createProduct = await Product.create(req.body);
+
+        const [foundProduct, createdUser] = await Promise.all([findProduct, createProduct]);
+        foundProduct.users.push(createdUser)
+        res.redirect('/products');
     } catch (err) {
         res.send(err);
         console.log(err);
@@ -40,9 +44,9 @@ router.post('/', async (req, res) => {
 // show route
 router.get('/:id', async (req, res) => {
     try {
-        const foundOutfit = await Outfit.findById(req.params.id);
-        res.render('outfits/show.ejs', {
-            outfit: foundOutfit
+        const foundProduct = await Product.findById(req.params.id);
+        res.render('products/show.ejs', {
+            product: foundProduct
         })
     } catch (err) {
         res.send(err);
@@ -53,9 +57,9 @@ router.get('/:id', async (req, res) => {
 // edit get route
 router.get('/:id/edit', async (req, res) => {
     try {
-        const foundOutfit = await Outfit.findById(req.params.id);
-        res.render('outfits/edit.ejs', {
-            outfit: foundOutfit
+        const foundProduct = await Product.findById(req.params.id);
+        res.render('products/edit.ejs', {
+            product: foundProduct
         })
     } catch (err) {
         res.send(err);
@@ -66,8 +70,8 @@ router.get('/:id/edit', async (req, res) => {
 // edit post route
 router.put('/:id', async (req, res) => {
     try {
-        const createdOutfit = await Outfit.findByIdAndUpdate(req.params.id, req.body, {new: true});
-        res.redirect('/outfits');
+        const createdProduct = await Product.findByIdAndUpdate(req.params.id, req.body, {new: true});
+        res.redirect('/products');
     } catch (err) {
         res.send(err);
         console.log(err);
@@ -76,8 +80,8 @@ router.put('/:id', async (req, res) => {
 
 // delete route
 router.delete('/:id', async (req, res) => {
-   const deletedOutfit = await Outfit.findByIdAndRemove(req.params.id);
-   res.redirect('/outfits');
+   const deletedProduct = await Product.findByIdAndRemove(req.params.id);
+   res.redirect('/products');
 })
 
 

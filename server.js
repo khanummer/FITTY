@@ -2,8 +2,8 @@ const express = require('express');
 const app = express();
 require('./db/db');
 const bodyParser = require('body-parser');
-const outfitController = require('./controllers/outfits');
-const authenticationController =require('./controllers/authentication');
+const productController = require('./controllers/products');
+const userController =require('./controllers/users');
 const methodOverride = require('method-override');
 const session = require('express-session');
 
@@ -18,8 +18,8 @@ app.use(session({
 
 app.use(methodOverride('_method'));
 app.use(bodyParser.urlencoded({extended: false}));
-app.use('/outfits', outfitController);
-app.use('/authentication', authenticationController);
+app.use('/products', productController);
+app.use('/users', userController);
 
 
 

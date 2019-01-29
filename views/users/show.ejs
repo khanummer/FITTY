@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <link href="https://fonts.googleapis.com/css?family=Major+Mono+Display" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="/../css/style.css">
+</head>
+<body>
+    <h1> <%= user.username %></h1>
+
+    <br><a href="/"><button>home</button></a><br>
+    <br><a href="/users"><button>users index</button></a><br>
+ 
+      <ul>
+ 
+      </ul>
+
+    <br><a href="/users/<%=user._id%>/edit"><button>edit <%= user.username%></button></a><br>
+    <br><form action="/users/<%=user._id%>?_method=DELETE" method="POST">
+    <button type="submit">delete <%= user.username %></button>
+  </form><br>
+  </body>
+</html>

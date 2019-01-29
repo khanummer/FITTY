@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> </title>
+    <link href="https://fonts.googleapis.com/css?family=Major+Mono+Display" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/../css/style.css">
+  </head>
+  <body>
+        <h1>user index</h1>
+       <a href="/"><button>home</button></a><br>
+       <a href="/users/new"><button>create new user</button></a><br>
+        <ul>
+                    <% for (let i = 0; i < users.length; i++) { %>
+            <li>
+                    <a href="/users/<%=users[i]._id%>"><%=users[i].username%> </a>
+                <% } %>
+            </li>
+        </ul>
+  </body>
+</html>

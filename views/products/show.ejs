@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> </title>
+    <link href="https://fonts.googleapis.com/css?family=Major+Mono+Display" rel="stylesheet">
+    <link rel="stylesheet" href="/../css/style.css">
+
+  </head>
+  <body>
+        <h1> <%= product.brand %> <%= product.type %>  </h1>
+    
+    <br><%= product.color %><br>
+    <br><img src="<%= product.image %>"><br>
+
+    
+    <br><a href="/products/<%=product._id%>/edit"><button>edit <%= product.name %></button></a><br>
+    
+    <form action="/products/<%=product._id%>?_method=DELETE" method="POST">
+        <button type="submit">delete <%= product.name %> </button>
+    </form>
+    
+    <br><a href="/products"><button>products</button></a><br>
+    <a href="/"><button>home</button></a><br>
+
+  </body>
+</html>

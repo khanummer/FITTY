@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> </title>
+    <link href="https://fonts.googleapis.com/css?family=Major+Mono+Display" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+  </head>
+  <body>
+        <h1>edit <%=user.username%></h1>
+       
+     <form action="/users" method="POST">
+        name <br><input type="text" name="username"><br>
+        <button type="submit">edit user</button><br>
+     </form>
+     <br><a href="/"><button>home</button></a><br>
+     <br><a href="/users"><button>users <% user.username %></button></a><br>
+  </body>
+</html>
