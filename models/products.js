@@ -5,7 +5,7 @@ const productSchema = mongoose.Schema({
     type: String,
     color: String,
     image: String,
-    userId: String
+    userId: { type: mongoose.Schema.ObjectId, ref: "User"}
 });
 
 const Product = mongoose.model('Product', productSchema);

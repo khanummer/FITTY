@@ -19,7 +19,11 @@ router.get('/', async (req, res) => {
 // new route
 router.get('/new', async (req, res) => {
     try {
-        res.render('products/new.ejs')
+        const allUsers = await User.find({})
+            res.render('products/new.ejs', {
+                users: allUsers
+            })
+        
     } catch (err) {
         res.send(err);
         console.log(err);
@@ -29,11 +33,12 @@ router.get('/new', async (req, res) => {
 // create route
 router.post('/', async (req, res) => {
     try {
-        const findUser = User.findById(req.body.userId);
+        const foundUser = await User.findById(req.session.user._id);
         const createProduct = await Product.create(req.body);
-
-        const [foundProduct, createdUser] = await Promise.all([findProduct, createProduct]);
-        foundProduct.users.push(createdUser)
+        createProduct.userId = foundUser._id
+        createProduct.save()
+        foundUser.products.push(createProduct._id);
+        foundUser.save()
         res.redirect('/products');
     } catch (err) {
         res.send(err);
@@ -44,7 +49,7 @@ router.post('/', async (req, res) => {
 // show route
 router.get('/:id', async (req, res) => {
     try {
-        const foundProduct = await Product.findById(req.params.id);
+        const foundProduct = await Product.findById(req.params.id).populate("userId");
         res.render('products/show.ejs', {
             product: foundProduct
         })

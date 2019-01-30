@@ -8,6 +8,7 @@
   </head>
   <body>
         <h1> <%= product.brand %> <%= product.type %>  </h1>
+        <a href="/users/<%=product.userId._id%>"><h2><%= product.userId.username %></h2></a>
     
     <br><%= product.color %><br>
     <br><img src="<%= product.image %>"><br>

@@ -12,8 +12,10 @@
     <h1>create a product</h1>
     <button><a href="/">home</button></a><br>
     <button><a href="/products">products</button></a><br>
-
     <form action="/products" method="POST">
+    
+    <p><%= currentUser.username %>
+    </p><br>
       brand<br><input type="text" name="brand"><br>
       type<br><input type="text" name="type"><br>
       color<br><input type="text" name="color"><br>

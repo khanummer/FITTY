@@ -18,6 +18,12 @@ app.use(session({
 
 app.use(methodOverride('_method'));
 app.use(bodyParser.urlencoded({extended: false}));
+
+app.use( (req, res, next) => {
+    res.locals.currentUser = req.session.user
+    next()
+})
+
 app.use('/products', productController);
 app.use('/users', userController);
 

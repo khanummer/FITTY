@@ -38,7 +38,7 @@ router.post('/', async (req, res) => {
 
 router.get('/:id', async (req, res) => {
     try {
-    const foundUser = await User.findById(req.params.id);
+    const foundUser = await User.findById(req.params.id).populate("products");
     res.render('users/show.ejs', {
         user: foundUser
     })
@@ -134,6 +134,7 @@ router.post('/registration', async (req, res) => {
     try {
         const createdUser = await User.create(newUser);
         // create a session
+        req.session.user = createdUser
         req.session.username = createdUser.username;
         req.session.logged = true;
         req.session.accountType = createdUser.accountType;
@@ -157,6 +158,7 @@ router.post('/login', async (req,res) => {
                 req.session.currentUser = loggedUser._id;
                 req.session.username = loggedUser.username;
                 req.session.logged = true;
+                req.session.user = loggedUser;
                 res.redirect('/')
                 console.log(loggedUser);
             } else {

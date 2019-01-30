@@ -12,7 +12,9 @@
     <br><a href="/users"><button>users index</button></a><br>
  
       <ul>
- 
+        <% user.products.forEach(product => { %>
+       <li> <a href="/products/<%=product._id%>"><%= product.brand %>&nbsp;<%= product.type %></a> </li>
+        <%   }) %>
       </ul>
 
     <br><a href="/users/<%=user._id%>/edit"><button>edit <%= user.username%></button></a><br>
