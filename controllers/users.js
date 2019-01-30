@@ -4,10 +4,39 @@ const User = require('../models/users');
 const Product = require('../models/products');
 const bcrypt = require('bcryptjs');
 
+
+// ajax search route
+
+router.get('/get-users', async (req, res) => {
+    console.log("hit")
+    try {
+   const foundUsers = await User.find({});
+   console.log('this is the users', foundUsers);
+   res.json(foundUsers);
+    } catch (err) {
+        res.send(err);
+        console.log(err);
+    }
+})
+
+
 // index route
 router.get('/', async (req, res) => {
     try {
         const allUsers = await User.find({});
+        res.render('users/index.ejs', {
+            users: allUsers
+        })
+    } catch (err) {
+        res.send(err);
+        console.log(err)
+    }
+});
+
+// search route
+router.post('/search', async (req, res) => {
+    try {
+        const allUsers = await User.find({username:  req.body.searchbarinput});
         res.render('users/index.ejs', {
             users: allUsers
         })
@@ -67,7 +96,7 @@ router.put('/:id', async (req, res) => {
         if (err) {
           res.send(err);
         } else {
-          res.redirect('/authors');
+          res.redirect('/users');
         }
       });
     });
@@ -100,19 +129,6 @@ router.delete(':/id', (req, res) => {
         )
     })
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -186,5 +202,7 @@ router.post('/logout', (req, res) => {
         }
     })
 })
+
+
 
 module.exports = router;

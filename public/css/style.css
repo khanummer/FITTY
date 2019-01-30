@@ -44,6 +44,21 @@ a:link {
   }
 
   img {
-      height: 300px;
-      width: 300px;
+      height: 150px;
+      width: 150px;
   }
+
+.container {
+    display: inline-grid;
+    grid-template-columns: 150px 150px 150px;
+    grid-template-rows: 150px 150px 150px;
+    grid-column-gap: 10px;
+    grid-row-gap: 5px;
+    align-items: center; 
+
+}
+
+.product-show-page-image {
+    height: 400px;
+    width: 400px;
+}

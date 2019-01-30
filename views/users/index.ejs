@@ -4,17 +4,27 @@
     <title> </title>
     <link href="https://fonts.googleapis.com/css?family=Major+Mono+Display" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/../css/style.css">
+    <script
+        src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"
+    >
+    </script>
+    <script defer type="text/javascript" src="/../js/script.js"></script>
+
   </head>
   <body>
         <h1>user index</h1>
        <a href="/"><button>home</button></a><br>
        <a href="/users/new"><button>create new user</button></a><br>
-        <ul>
-                    <% for (let i = 0; i < users.length; i++) { %>
-            <li>
-                    <a href="/users/<%=users[i]._id%>"><%=users[i].username%> </a>
-                <% } %>
-            </li>
+       
+        <p>search </p>
+        <input type="text" name="searchbarinput" class="searchText" autocomplete="off">
+
+        <ul class="users">
+            
         </ul>
+ 
   </body>
-</html>
+  
+  </html>

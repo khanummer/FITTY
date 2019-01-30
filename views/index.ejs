@@ -11,28 +11,28 @@
     <br><a href="/products"><button>products</button></a><br>
     <br><a href="/users"><button>users</button></a><br>
 </header>
-currently logged in | <%= loggedUser %> |<br>
+currently logged in | <%= loggedUser %> | <br>
 <%= message %><br>
  
- <h4> login </h4>
- <form action="/users/login" method="POST">
-    <input type="text" name="username" placeholder="username"><br>
-    <input type="password" name="password" placeholder="password"><br>
-    <button type="submit">login</button>
+
+<h4> login </h4>
+<form action="/users/login" method="POST">
+   <input type="text" name="username" placeholder="username"><br>
+   <input type="password" name="password" placeholder="password"><br>
+   <button type="submit">login</button><br>
 </form>
 
 <h4> register </h4>
 <form action="/users/registration" method="POST">
-    <input type="text" name="username" placeholder="username"><br>
-    <input type="password" name="password" placeholder="password"><br>
-    <button type="submit">register</button><br>
-</form>
+   <input type="text" name="username" placeholder="username"><br>
+   <input type="password" name="password" placeholder="password"><br>
+   <button type="submit">register</button><br>
 
-
-<form action="/users/logout" method="POST">
+<br><form action="/users/logout" method="POST">
     <button type="submit">logout</button>
-</form>
+</form><br>
 
+    <a href="/users/search"><button>search</button></a>
 
 
 

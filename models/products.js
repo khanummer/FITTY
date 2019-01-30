@@ -5,6 +5,7 @@ const productSchema = mongoose.Schema({
     type: String,
     color: String,
     image: String,
+    description: String,
     userId: { type: mongoose.Schema.ObjectId, ref: "User"}
 });
 

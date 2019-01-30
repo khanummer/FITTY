@@ -11,9 +11,9 @@
         <a href="/users/<%=product.userId._id%>"><h2><%= product.userId.username %></h2></a>
     
     <br><%= product.color %><br>
-    <br><img src="<%= product.image %>"><br>
+    <br><img class="product-show-page-image" src="<%= product.image %>"><br>
 
-    
+    <br><%= product.description %><br>
     <br><a href="/products/<%=product._id%>/edit"><button>edit <%= product.name %></button></a><br>
     
     <form action="/products/<%=product._id%>?_method=DELETE" method="POST">
