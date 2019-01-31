@@ -21,6 +21,7 @@ function createList(users) {
 }
 
 searchText.keyup((evt) => {
+    // console.log(evt.target.value)
     createList(users.filter(user => user.username.toLowerCase().includes(evt.target.value.toLowerCase())))
 })
 

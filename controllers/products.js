@@ -59,6 +59,26 @@ router.get('/:id', async (req, res) => {
     }
 });
 
+// comment route
+router.post('/:id', async (req, res) => {
+    try {
+        const foundProduct = await Product.findById(req.params.id);
+        const foundUser = await User.findById(req.session.user._id);
+        const newComment = {}
+        newComment.userId = foundUser._id;
+        newComment.username = foundUser.username;
+        newComment.comment = req.body.newcomment;
+        foundProduct.comments.push(newComment)
+        foundProduct.save();
+        console.log(foundProduct);
+        console.log(foundUser)
+        res.redirect(`/products/${foundProduct._id}`);        
+    } catch (err) {
+        res.send(err);
+        console.log(err);
+    }
+})
+
 // edit get route
 router.get('/:id/edit', async (req, res) => {
     try {

@@ -8,10 +8,10 @@ const bcrypt = require('bcryptjs');
 // ajax search route
 
 router.get('/get-users', async (req, res) => {
-    console.log("hit")
+    // console.log("hit")
     try {
    const foundUsers = await User.find({});
-   console.log('this is the users', foundUsers);
+//    console.log('this is the users', foundUsers);
    res.json(foundUsers);
     } catch (err) {
         res.send(err);
@@ -176,7 +176,7 @@ router.post('/login', async (req,res) => {
                 req.session.logged = true;
                 req.session.user = loggedUser;
                 res.redirect('/')
-                console.log(loggedUser);
+                // console.log(loggedUser);
             } else {
                 req.session.message = 'your username or password are incorrect'
             }

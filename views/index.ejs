@@ -8,8 +8,8 @@
 <body>
 <header>
     <h1>fitty</h1>
-    <br><a href="/products"><button>products</button></a><br>
-    <br><a href="/users"><button>users</button></a><br>
+    <br><a href="/products"><button>products index</button></a><br>
+    <br><a href="/users"><button>search users</button></a><br>
 </header>
 currently logged in | <%= loggedUser %> | <br>
 <%= message %><br>
@@ -26,6 +26,8 @@ currently logged in | <%= loggedUser %> | <br>
 <form action="/users/registration" method="POST">
    <input type="text" name="username" placeholder="username"><br>
    <input type="password" name="password" placeholder="password"><br>
+   <input type="text" name="profilePic" placeholder="profile picture"><br>
+   bio <br><br> <textarea name="bio"></textarea><br>
    <button type="submit">register</button><br>
 <br>
 </form>
@@ -34,7 +36,6 @@ currently logged in | <%= loggedUser %> | <br>
     <button type="submit">logout</button>
 </form><br>
 
-    <a href="/users/search"><button>search</button></a>
 
 
 
