@@ -8,13 +8,20 @@
 <body>
 <header>
     <h1>fitty</h1>
-    <br><a href="/products"><button>products index</button></a><br>
-    <br><a href="/users"><button>search users</button></a><br>
 </header>
-currently logged in | <%= loggedUser %> | <br>
-<%= message %><br>
- 
+    <nav id="nav-bar">
+        <ul id="nav-bar-ul">
+            <br><li id="nav-bar-li"><a href="/"><img id="nav-bar-img" src="/images/home-button.png"></a></li><br>
+            <br><li id="nav-bar-li"><a href="/users"><img id="nav-bar-img" src="/images/search-button.png"></a></li><br>
+            <br><li id="nav-bar-li"><a href="/products"><img id="nav-bar-img" src="/images/products-button.png"></a></li><br>
+            <br><li id="nav-bar-li"><a href="/users/<%=loggedUser._id%>"><img id="nav-bar-img" src="/images/profile-button.png"></button></a></li><br>
+        </ul>
+    </nav>
 
+
+<main>
+<%= message %><br>
+<%= loggedUser %>
 <h4> login </h4>
 <form action="/users/login" method="POST">
    <input type="text" name="username" placeholder="username"><br>
@@ -35,7 +42,7 @@ currently logged in | <%= loggedUser %> | <br>
 <form action="/users/logout" method="POST">
     <button type="submit">logout</button>
 </form><br>
-
+</main>
 
 
 

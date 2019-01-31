@@ -8,6 +8,8 @@ router.get('/', async (req, res) => {
         const allProducts = await Product.find({});
         res.render('products/index.ejs', {
             product: allProducts
+            
+
         })
     } catch (err) {
         res.send(err);
@@ -22,6 +24,8 @@ router.get('/new', async (req, res) => {
         const allUsers = await User.find({})
             res.render('products/new.ejs', {
                 users: allUsers
+                
+
             })
         
     } catch (err) {
@@ -52,6 +56,8 @@ router.get('/:id', async (req, res) => {
         const foundProduct = await Product.findById(req.params.id).populate("userId");
         res.render('products/show.ejs', {
             product: foundProduct
+            
+
         })
     } catch (err) {
         res.send(err);
@@ -70,8 +76,8 @@ router.post('/:id', async (req, res) => {
         newComment.comment = req.body.newcomment;
         foundProduct.comments.push(newComment)
         foundProduct.save();
-        console.log(foundProduct);
-        console.log(foundUser)
+        // console.log(foundProduct);
+        // console.log(foundUser)
         res.redirect(`/products/${foundProduct._id}`);        
     } catch (err) {
         res.send(err);
@@ -85,6 +91,8 @@ router.get('/:id/edit', async (req, res) => {
         const foundProduct = await Product.findById(req.params.id);
         res.render('products/edit.ejs', {
             product: foundProduct
+            
+
         })
     } catch (err) {
         res.send(err);

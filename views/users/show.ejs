@@ -5,18 +5,29 @@
   <link href="https://fonts.googleapis.com/css?family=Major+Mono+Display" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="/../css/style.css">
 </head>
+<header>
+    <h1>fitty</h1>
+</header>
+<nav id="nav-bar">
+<ul id="nav-bar-ul">
+    <br><li id="nav-bar-li"><a href="/"><img id="nav-bar-img" src="/images/home-button.png"></a></li><br>
+    <br><li id="nav-bar-li"><a href="/users"><img id="nav-bar-img" src="/images/search-button.png"></a></li><br>
+    <br><li id="nav-bar-li"><a href="/products"><img id="nav-bar-img" src="/images/products-button.png"></a></li><br>
+    <br><li id="nav-bar-li"><a href="#"><img id="nav-bar-img" src="/images/profile-button.png"></button></a></li><br>
+</ul>
+</nav>
 <body>
-    <h1> <%= user.username %></h1>
-    <br><a href="/"><button>home</button></a><br>
-    <br><a href="/users"><button>search users</button></a><br>
- 
-    <img src="<%= user.profilePic %>">
+<main>
+    <div id="username-show"> <%= user.username %></div>
 
-    <%= user.bio %>
+ 
+   <br> <div><img id="profile-pic" src="<%= user.profilePic %>"></div><br>
+
+   <br> <%= user.bio %><br>
       
        
             
-    <div class="container">
+    <br><div class="container">
     <% user.products.forEach(product => { %>
     <a href="/products/<%=product._id%>"><div><img src="<%=product.image %>"></div></a>
             <% }) %>
@@ -26,6 +37,7 @@
     <br><a href="/users/<%=user._id%>/edit"><button>edit <%= user.username%></button></a><br>
     <br><form action="/users/<%=user._id%>?_method=DELETE" method="POST">
     <button type="submit">delete <%= user.username %></button>
+    </main>
   </form><br>
   </body>
 </html>

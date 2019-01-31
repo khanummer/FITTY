@@ -5,18 +5,27 @@
     <link href="https://fonts.googleapis.com/css?family=Major+Mono+Display" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/css/style.css">
   </head>
+  <header>
+    <h1>fitty</h1>
+</header>
+  <nav id="nav-bar">
+  <ul id="nav-bar-ul">
+      <br><li id="nav-bar-li"><a href="/"><img id="nav-bar-img" src="/images/home-button.png"></a></li><br>
+      <br><li id="nav-bar-li"><a href="/users"><img id="nav-bar-img" src="/images/search-button.png"></a></li><br>
+      <br><li id="nav-bar-li"><a href="/products"><img id="nav-bar-img" src="/images/products-button.png"></a></li><br>
+      <br><li id="nav-bar-li"><a href="#"><img id="nav-bar-img" src="/images/profile-button.png"></button></a></li><br>
+  </ul>
+</nav>
   <body>
-        <h1>create new user</h1>
+  <main>
+        <h2>create new user</h2>
        
      <form action="/users" method="POST">
-        name <br><input type="text" name="username"><br>
+        username <br><input type="text" name="username"><br>
         profile pic <br><input type="text" name="profilePic"><br>
         bio <br> <textarea name="bio"></textarea><br>
         <button type="submit">create user</button><br>
      </form>
-     <a href="/"><button>home</button></a>
-     <a href="/users"><button>users index</button></a>
-
-
+</main>
   </body>
 </html>

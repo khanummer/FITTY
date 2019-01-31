@@ -26,6 +26,8 @@ router.get('/', async (req, res) => {
         const allUsers = await User.find({});
         res.render('users/index.ejs', {
             users: allUsers
+            
+
         })
     } catch (err) {
         res.send(err);
@@ -39,6 +41,8 @@ router.post('/search', async (req, res) => {
         const allUsers = await User.find({username:  req.body.searchbarinput});
         res.render('users/index.ejs', {
             users: allUsers
+            
+
         })
     } catch (err) {
         res.send(err);
@@ -71,6 +75,7 @@ router.get('/:id', async (req, res) => {
     res.render('users/show.ejs', {
         user: foundUser
     })
+    console.log(foundUser);
     } catch (err) {
         console.log(err);
         res.send(err);
@@ -80,9 +85,11 @@ router.get('/:id', async (req, res) => {
 // edit route
 router.get('/:id/edit', async (req, res) => {
     try {
-        const foundUser = await User.findById(req.params.id);
+        const foundUser = await User.findById(req.session.id);
         res.render('users/edit.ejs', {
             user: foundUser
+            
+
         })
     } catch(err) {
         res.send(err);
@@ -138,6 +145,10 @@ router.delete(':/id', (req, res) => {
 router.post('/registration', async (req, res) => {
     // username
     const username = req.body.username;
+    // profile pic
+    const profilePic = req.body.profilePic;
+    // bio
+    const bio = req.body.bio;
     // password
     const password = req.body.password;
     // have 2 hash / encrypt the password
@@ -146,6 +157,8 @@ router.post('/registration', async (req, res) => {
     const newUser = {};
     newUser.username = username;
     newUser.password = hashedPassword;
+    newUser.profilePic = profilePic;
+    newUser.bio = bio;
     // newUser.accountType = req.body.accountType === 'Buyer' ? 'Buyer' : 'Seller
     try {
         const createdUser = await User.create(newUser);

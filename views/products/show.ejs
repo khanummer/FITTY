@@ -11,9 +11,25 @@
     <link rel="stylesheet" href="/../css/style.css">
 
   </head>
+  <header>
+    <h1>fitty</h1>
+</header>
+  <nav id="nav-bar">
+  <ul id="nav-bar-ul">
+      <br><li id="nav-bar-li"><a href="/"><img id="nav-bar-img" src="/images/home-button.png"></a></li><br>
+      <br><li id="nav-bar-li"><a href="/users"><img id="nav-bar-img" src="/images/search-button.png"></a></li><br>
+      <br><li id="nav-bar-li"><a href="/products"><img id="nav-bar-img" src="/images/products-button.png"></a></li><br>
+      <br><li id="nav-bar-li"><a href="#"><img id="nav-bar-img" src="/images/profile-button.png"></button></a></li><br>
+  </ul>
+</nav>
   <body>
-        <h1> <%= product.brand %> <%= product.type %>  </h1>
-        <a href="/users/<%=product.userId._id%>"><h2><%= product.userId.username %></h2></a>
+  <main>
+        
+  <a href="/users/<%=product.userId._id%>"><div id="username-show"><%= product.userId.username %></div></a>
+
+  
+  
+  <h2> <%= product.brand %> <%= product.type %>  </h2>
     
     <br><%= product.color %><br>
     <br><img class="product-show-page-image" src="<%= product.image %>"><br>
@@ -30,7 +46,7 @@
     <ul>
               <% product.comments.forEach(comment => { %>
       <li>
-              <%= comment.username %> : <%= comment.comment %>
+              <a href="/users/<%=comment.userId%>"><%= comment.username %> :  <%= comment.comment %></a>
       </li>
               <% }) %>
     </ul>
@@ -53,6 +69,6 @@
     
     <br><a href="/products"><button>products</button></a><br>
     <a href="/"><button>home</button></a><br>
-
+</main>
   </body>
 </html>
