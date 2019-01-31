@@ -13,16 +13,16 @@
       <br><li id="nav-bar-li"><a href="/"><img id="nav-bar-img" src="/images/home-button.png"></a></li><br>
       <br><li id="nav-bar-li"><a href="/users"><img id="nav-bar-img" src="/images/search-button.png"></a></li><br>
       <br><li id="nav-bar-li"><a href="/products"><img id="nav-bar-img" src="/images/products-button.png"></a></li><br>
-      <br><li id="nav-bar-li"><a href="#"><img id="nav-bar-img" src="/images/profile-button.png"></button></a></li><br>
+      <br><li id="nav-bar-li"><a href="/users/<%=currentUser._id%>"><img id="nav-bar-img" src="/images/profile-button.png"></button></a></li><br>
   </ul>
 </nav>
   <body>
   <main>
         <h2>edit <%=user.username%></h2>
        
-     <form action="/users" method="POST">
-     username <br><input type="text" name="username"><br>
-     profile pic <br><input type="text" name="profilePic"><br>
+     <form action="/users/<%=user._id%>?_method=PUT" method="POST">
+     username <br><input type="text" name="username" value="<%=user.username%>"><br>
+     profile pic <br><input type="text" name="profilePic" value="<%=user.profilePic%>"><br>
      bio <br> <textarea name="bio"></textarea><br>
      <button type="submit">edit user</button><br>
      </form>

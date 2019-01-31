@@ -1,11 +1,16 @@
 const express = require('express');
 const app = express();
-require('./db/db');
 const bodyParser = require('body-parser');
 const productController = require('./controllers/products');
 const userController =require('./controllers/users');
 const methodOverride = require('method-override');
 const session = require('express-session');
+require('dotenv').config();
+
+require('./db/db');
+
+
+
 
 app.use(express.static(__dirname + "/public"));
 

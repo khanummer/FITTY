@@ -7,8 +7,8 @@ router.get('/', async (req, res) => {
     try {
         const allProducts = await Product.find({});
         res.render('products/index.ejs', {
-            product: allProducts
-            
+            product: allProducts,
+            currentUser: req.session.user
 
         })
     } catch (err) {
@@ -23,8 +23,9 @@ router.get('/new', async (req, res) => {
     try {
         const allUsers = await User.find({})
             res.render('products/new.ejs', {
-                users: allUsers
-                
+                users: allUsers,
+                currentUser: req.session.user
+
 
             })
         
@@ -55,8 +56,9 @@ router.get('/:id', async (req, res) => {
     try {
         const foundProduct = await Product.findById(req.params.id).populate("userId");
         res.render('products/show.ejs', {
-            product: foundProduct
-            
+            product: foundProduct,
+            currentUser: req.session.user
+
 
         })
     } catch (err) {
@@ -90,8 +92,9 @@ router.get('/:id/edit', async (req, res) => {
     try {
         const foundProduct = await Product.findById(req.params.id);
         res.render('products/edit.ejs', {
-            product: foundProduct
-            
+            product: foundProduct,
+            currentUser: req.session.user
+
 
         })
     } catch (err) {

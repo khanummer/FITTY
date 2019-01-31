@@ -56,10 +56,19 @@ a {
     width: 100px
 }
 
+#settings {
+    height: 150px;
+    width: 150px;
+}
 
 #username-show {
     font-size: 50px;
 }
+
+#delete-button {
+    border: none;
+}
+
 /* unvisited link
 a:link {
     color: red;
@@ -86,6 +95,11 @@ a:link {
     background-color: hotpink;
     color: black;
   }
+
+  #delete-button:hover {
+    border: none;
+    background-color: black;
+}
 
   img {
       height: 150px;

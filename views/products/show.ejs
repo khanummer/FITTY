@@ -19,7 +19,7 @@
       <br><li id="nav-bar-li"><a href="/"><img id="nav-bar-img" src="/images/home-button.png"></a></li><br>
       <br><li id="nav-bar-li"><a href="/users"><img id="nav-bar-img" src="/images/search-button.png"></a></li><br>
       <br><li id="nav-bar-li"><a href="/products"><img id="nav-bar-img" src="/images/products-button.png"></a></li><br>
-      <br><li id="nav-bar-li"><a href="#"><img id="nav-bar-img" src="/images/profile-button.png"></button></a></li><br>
+      <br><li id="nav-bar-li"><a href="/users/<%=currentUser._id%>"><img id="nav-bar-img" src="/images/profile-button.png"></button></a></li><br>
   </ul>
 </nav>
   <body>
@@ -61,14 +61,12 @@
 
 
 
-    <br><a href="/products/<%=product._id%>/edit"><button>edit <%= product.name %></button></a><br>
+    <br><a href="/products/<%=product._id%>/edit"><img src="/images/edit-button.png"></a><br>
     
     <form action="/products/<%=product._id%>?_method=DELETE" method="POST">
-        <button type="submit">delete <%= product.name %> </button>
-    </form>
-    
-    <br><a href="/products"><button>products</button></a><br>
-    <a href="/"><button>home</button></a><br>
+        <button id="delete-button" type="input"><img src="/images/delete-button.png"></button>
+  </form>
+    <a href="#"><img id="settings" src="/images/settings-button.png"></button></a>
 </main>
   </body>
 </html>

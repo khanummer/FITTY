@@ -4,6 +4,21 @@ const User = require('../models/users');
 const Product = require('../models/products');
 const bcrypt = require('bcryptjs');
 
+//settings route
+router.get('/settings', async (req, res) => {
+        try {
+    const foundUser = await  User.findOne({username: req.session.username})
+    res.render('users/settings.ejs', {
+        user: foundUser,
+        currentUser: req.session.user
+    }) 
+    } catch (err) {
+        res.send(Err);
+        console.log(err)
+    }
+})
+
+
 
 // ajax search route
 
@@ -40,8 +55,9 @@ router.post('/search', async (req, res) => {
     try {
         const allUsers = await User.find({username:  req.body.searchbarinput});
         res.render('users/index.ejs', {
-            users: allUsers
-            
+            users: allUsers,
+            currentUser: req.session.user
+
 
         })
     } catch (err) {
@@ -73,9 +89,10 @@ router.get('/:id', async (req, res) => {
     try {
     const foundUser = await User.findById(req.params.id).populate("products");
     res.render('users/show.ejs', {
-        user: foundUser
+        user: foundUser,
+        currentUser: req.session.user
+
     })
-    console.log(foundUser);
     } catch (err) {
         console.log(err);
         res.send(err);
@@ -85,11 +102,12 @@ router.get('/:id', async (req, res) => {
 // edit route
 router.get('/:id/edit', async (req, res) => {
     try {
-        const foundUser = await User.findById(req.session.id);
+        // const foundUser = await User.findById(req.session.id);
+        const foundUser = await  User.findOne({username: req.session.username})
+        console.log(foundUser);
         res.render('users/edit.ejs', {
-            user: foundUser
-            
-
+            user: foundUser,
+            currentUser: req.session.user
         })
     } catch(err) {
         res.send(err);
@@ -99,23 +117,22 @@ router.get('/:id/edit', async (req, res) => {
 
 // update route
 router.put('/:id', async (req, res) => {
-    User.findByIdAndUpdate(req.params.id, req.body, {new: true},(err, updatedUser) => {
-        if (err) {
-          res.send(err);
-        } else {
-          res.redirect('/users');
-        }
-      });
-    });
+    try {
+    updatedUser = await User.findByIdAndUpdate(req.session.currentUser, req.body, {new: true});
+    updatedUser.save();
+    console.log(updatedUser);
+    res.redirect('/users');
 
-    // try {
-    //     const updatedUser = await User.findByIdAndUpdate(req.params.id, req.body, {new:true});
-    //     res.redirect('/users');
-    // } catch (err) {
-    //     console.log(err);
-    //     res.render(err);
-    // }
-// })
+    } catch (err) {
+        res.send(err);
+        console.log(err);
+    }
+});
+
+
+
+
+
 
 // delete route
 router.delete(':/id', (req, res) => {
@@ -164,6 +181,7 @@ router.post('/registration', async (req, res) => {
         const createdUser = await User.create(newUser);
         // create a session
         req.session.user = createdUser
+        req.session.currentUser = loggedUser._id;
         req.session.username = createdUser.username;
         req.session.logged = true;
         req.session.accountType = createdUser.accountType;
