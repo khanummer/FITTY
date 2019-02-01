@@ -2,6 +2,10 @@ const express = require('express');
 const router = express.Router();
 const Product = require('../models/products');
 const User = require('../models/users');
+
+
+
+
 // index route
 router.get('/', async (req, res) => {
     try {
@@ -54,18 +58,56 @@ router.post('/', async (req, res) => {
 // show route
 router.get('/:id', async (req, res) => {
     try {
+        const loggedUser = await  User.findOne({username: req.session.username});
         const foundProduct = await Product.findById(req.params.id).populate("userId");
+        console.log('this is logged user')
+        console.log(loggedUser);
+        console.log('this is found product')
+        console.log(foundProduct);
+        if (loggedUser._id.toString() == foundProduct.userId._id.toString()) {
+            res.render('products/settings.ejs', {
+                product: foundProduct,
+                currentUser: req.session.user
+            })
+        } else {
+
         res.render('products/show.ejs', {
             product: foundProduct,
             currentUser: req.session.user
 
 
         })
-    } catch (err) {
+    } 
+    }catch (err) {
         res.send(err);
         console.log(err);
     }
 });
+
+// settings route
+router.get('/settings', async (req, res) => {
+    // try {
+        const foundProduct = await Product.findById(req.body.id);
+        console.log( 'this is logged user')
+        console.log(loggedUser);
+        console.log(' this is found product')
+        console.log(foundProduct);
+        // if (loggedUser._id === foundProduct.userId) {
+
+    res.render('products/settings.ejs', {
+        product: foundProduct,
+        currentUser: req.session.user
+    })
+    //     } else (
+    //         res.redirect('/')
+    //         // redirect to same page
+    //     ) 
+    // } catch (err) {
+    //     res.send(err);
+    //     console.log(err)
+    // }
+})
+
 
 // comment route
 router.post('/:id', async (req, res) => {

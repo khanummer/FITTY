@@ -21,10 +21,15 @@
 
 <main>
 
+<h2><%=user.username%> settings page</h2>
+
+
 <br><a href="/users/<%=user._id%>/edit"><img src="/images/edit-button.png"></a>
 
 
-
+<form action="/users/<%=user._id%>?_method=DELETE" method="POST">
+<button id="delete-button" type="input"><img src="/images/delete-button.png"></button>
+</form>
 
 </main>
 

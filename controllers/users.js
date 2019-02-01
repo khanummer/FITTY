@@ -158,6 +158,7 @@ router.delete(':/id', (req, res) => {
 
 
 
+
 // registration / sign up route
 router.post('/registration', async (req, res) => {
     // username
@@ -181,7 +182,7 @@ router.post('/registration', async (req, res) => {
         const createdUser = await User.create(newUser);
         // create a session
         req.session.user = createdUser
-        req.session.currentUser = loggedUser._id;
+        // req.session.currentUser = loggedUser._id;
         req.session.username = createdUser.username;
         req.session.logged = true;
         req.session.accountType = createdUser.accountType;

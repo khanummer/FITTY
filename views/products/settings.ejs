@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <link href="https://fonts.googleapis.com/css?family=Major+Mono+Display" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header>
+    <h1>fitty</h1>
+</header>
+    <nav id="nav-bar">
+        <ul id="nav-bar-ul">
+            <br><li id="nav-bar-li"><a href="/"><img id="nav-bar-img" src="/images/home-button.png"></a></li><br>
+            <br><li id="nav-bar-li"><a href="/users"><img id="nav-bar-img" src="/images/search-button.png"></a></li><br>
+            <br><li id="nav-bar-li"><a href="/products"><img id="nav-bar-img" src="/images/products-button.png"></a></li><br>
+            <br><li id="nav-bar-li"><a href="/users/<%=currentUser._id%>"><img id="nav-bar-img" src="/images/profile-button.png"></button></a></li><br>
+        </ul>
+    </nav>
+
+
+<main>
+<a href="/users/<%=product.userId._id%>"><div id="username-show"><%= product.userId.username %></div></a>
+
+  
+  
+<h2> <%= product.brand %> <%= product.type %>  </h2>
+  
+  <br><%= product.color %><br>
+  <br><img class="product-show-page-image" src="<%= product.image %>"><br>
+
+  <br><%= product.description %><br>
+
+
+
+
+
+  <br><h2>comments</h2><br>
+  
+
+  <ul>
+            <% product.comments.forEach(comment => { %>
+    <li>
+            <a href="/users/<%=comment.userId%>"><%= comment.username %> :  <%= comment.comment %></a>
+    </li>
+            <% }) %>
+  </ul>
+
+  <br><form action="/products/<%=product._id%>" method="POST">
+  <textarea name="newcomment"></textarea><br>
+  <button type="submit">comment</button>
+  </form>  
+
+
+
+
+
+
+
+<br><a href="/products/<%=product._id%>/edit"><img src="/images/edit-button.png"></a><br>
+    
+<form action="/products/<%=product._id%>?_method=DELETE" method="POST">
+    <button id="delete-button" type="input"><img src="/images/delete-button.png"></button>
+</form>
+
+
+
+<a href="/users/settings"><img id="settings" src="/images/settings-button.png"></a>
+
+
+
+
+</main>
+
+
+
+
+
+</body>
+</html>
