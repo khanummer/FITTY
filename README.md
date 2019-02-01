@@ -6,10 +6,10 @@ A SOCIAL MEDIA APP FOR PEOPLE WHO ENJOY FASHION / STREETWEAR CULTURE.
 
 THIS APP WAS CREATED USING HTML, CSS, JAVASCRIPT, NODEJS &EXPRESS.
 
-![HOME PAGE SCREENSHOT]("public/images/readme-screenshot-1.png")
+![HOME PAGE SCREENSHOT](public/images/readme-screenshot-1.png)
 
 ![PROFILE PAGE SCREENSHOT]
-("public/images/readme-screenshot-2.png")
+(public/images/readme-screenshot-2.png)
 
 
 
@@ -27,13 +27,13 @@ UNSOLVED PROBLEMS / INCOMING FEATURES :
 EARLY APP / DESIGN CONCEPT :
 
 ![WIREFRAME FOR NAV BAR]
-("public/images/wire-frames-1.png")
+(public/images/wire-frames-1.png)
 
 ![WIREFRAME 3JS]
-("public/images/wire-frames-3.png")
+(public/images/wire-frames-3.png)
 
 ![WIREFRAME 3JS PT2]
-("public/images/wire-frames-4.png")
+(public/images/wire-frames-4.png)
 
 
 CONTACT : 
