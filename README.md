@@ -8,8 +8,7 @@ THIS APP WAS CREATED USING HTML, CSS, JAVASCRIPT, NODEJS &EXPRESS.
 
 ![HOME PAGE SCREENSHOT](https://i.imgur.com/lmicZ5i.png)
 
-![PROFILE PAGE SCREENSHOT]
-(https://i.imgur.com/rq6Fcjg.png)
+![PROFILE PAGE SCREENSHOT](https://i.imgur.com/rq6Fcjg.png)
 
 
 
@@ -26,14 +25,11 @@ UNSOLVED PROBLEMS / INCOMING FEATURES :
 
 EARLY APP / DESIGN CONCEPT :
 
-![WIREFRAME FOR NAV BAR]
-(https://i.imgur.com/hiJCpGI.png)
+![WIREFRAME FOR NAV BAR](https://i.imgur.com/hiJCpGI.png)
 
-![WIREFRAME 3JS]
-(https://i.imgur.com/QOKzedt.png)
+![WIREFRAME 3JS](https://i.imgur.com/QOKzedt.png)
 
-![WIREFRAME 3JS PT2]
-(https://i.imgur.com/V2L1IUc.png)
+![WIREFRAME 3JS PT2](https://i.imgur.com/V2L1IUc.png)
 
 
 CONTACT : 
