@@ -18,7 +18,19 @@ router.get('/settings', async (req, res) => {
     }
 })
 
-
+// delete route
+router.get('/delete', async (req, res) => {
+    try {
+const foundUser = await  User.findOne({username: req.session.username})
+res.render('users/delete.ejs', {
+    user: foundUser,
+    currentUser: req.session.user
+}) 
+} catch (err) {
+    res.send(Err);
+    console.log(err)
+}
+})
 
 // ajax search route
 
@@ -104,7 +116,7 @@ router.get('/:id/edit', async (req, res) => {
     try {
         // const foundUser = await User.findById(req.session.id);
         const foundUser = await  User.findOne({username: req.session.username})
-        console.log(foundUser);
+        // console.log(foundUser);
         res.render('users/edit.ejs', {
             user: foundUser,
             currentUser: req.session.user
@@ -120,7 +132,7 @@ router.put('/:id', async (req, res) => {
     try {
     updatedUser = await User.findByIdAndUpdate(req.session.currentUser, req.body, {new: true});
     updatedUser.save();
-    console.log(updatedUser);
+    // console.log(updatedUser);
     res.redirect('/users');
 
     } catch (err) {
@@ -135,20 +147,21 @@ router.put('/:id', async (req, res) => {
 
 
 // delete route
-router.delete(':/id', (req, res) => {
-    User.findByIdAndRemove(req.params.id, (err, deletedAuthor) => {
-    const productIds = [];
-    for ( let i = 0; i < deletedUser.products[i]._id; i++){
-        productIds.push(deletedUser.products[i]._id);       
-    }
+router.delete('/:id', (req, res) => {
+    User.findByIdAndRemove(req.params.id, (err, deletedUser) => {
+    // const productIds = [];
+    // for ( let i = 0; i < deletedUser.products[i]._id; i++){
+    //     productIds.push(deletedUser.products[i]._id);       
+    // }
         Product.deleteMany(
             {
-                _id: {
-                    $in: productIds
+                userId: {
+                    $in: deletedUser._id
                 }
             }, 
             (err, data) => {
-                res.redirect('/users');
+                req.session.destroy();
+                res.redirect('/');
             }
         )
     })
@@ -161,6 +174,9 @@ router.delete(':/id', (req, res) => {
 
 // registration / sign up route
 router.post('/registration', async (req, res) => {
+    if(!req.body.profilePic){
+        req.body.profilePic = "../images/default-profile-pic.png"
+    }
     // username
     const username = req.body.username;
     // profile pic

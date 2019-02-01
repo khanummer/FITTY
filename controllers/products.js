@@ -60,10 +60,10 @@ router.get('/:id', async (req, res) => {
     try {
         const loggedUser = await  User.findOne({username: req.session.username});
         const foundProduct = await Product.findById(req.params.id).populate("userId");
-        console.log('this is logged user')
-        console.log(loggedUser);
-        console.log('this is found product')
-        console.log(foundProduct);
+        // console.log('this is logged user')
+        // console.log(loggedUser);
+        // console.log('this is found product')
+        // console.log(foundProduct);
         if (loggedUser._id.toString() == foundProduct.userId._id.toString()) {
             res.render('products/settings.ejs', {
                 product: foundProduct,
@@ -78,35 +78,11 @@ router.get('/:id', async (req, res) => {
 
         })
     } 
-    }catch (err) {
+    } catch (err) {
         res.send(err);
         console.log(err);
     }
 });
-
-// settings route
-router.get('/settings', async (req, res) => {
-    // try {
-        const foundProduct = await Product.findById(req.body.id);
-        console.log( 'this is logged user')
-        console.log(loggedUser);
-        console.log(' this is found product')
-        console.log(foundProduct);
-        // if (loggedUser._id === foundProduct.userId) {
-
-    res.render('products/settings.ejs', {
-        product: foundProduct,
-        currentUser: req.session.user
-    })
-    //     } else (
-    //         res.redirect('/')
-    //         // redirect to same page
-    //     ) 
-    // } catch (err) {
-    //     res.send(err);
-    //     console.log(err)
-    // }
-})
 
 
 // comment route
@@ -162,6 +138,25 @@ router.delete('/:id', async (req, res) => {
    res.redirect('/products');
 })
 
+
+// delete route
+router.delete('/:id', async (req, res)=>{
+    try {
+          const deleteProduct = Product.findByIdAndRemove(req.params.id);
+          const findUser    = User.findOne({'user._id': req.params.id});
+          const [deletedProduct, foundUser] = await Promise.all([deleteProduct, findUser]);
+          foundUser.products.id(req.params.id).remove();
+          await foundUser.save();
+  
+          res.redirect('/products');
+  
+      } catch(err){
+  
+        console.log(err)
+        res.send(err);
+      }
+  
+  });
 
 
 

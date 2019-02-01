@@ -21,13 +21,14 @@
 
 <main>
 
-<h2><%=user.username%> settings page</h2>
+<h2><%=user.username%> are you sure you want to delete your account ? </h2>
 
 
-<br><a href="/users/<%=user._id%>/edit"><img src="/images/edit-button.png"></a>
 
+<form action="/users/<%=user._id%>?_method=DELETE" method="POST">
+<button type="submit">yes</button>
+</form><br>
 
-<a href="/users/delete"><button id="delete-button" type="submit"><img src="/images/delete-button.png"></button></a>
 
 </main>
 

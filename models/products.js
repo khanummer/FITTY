@@ -16,19 +16,3 @@ module.exports = Product;
 
 
 
-
-// const productSchema = mongoose.Schema({
-//     comments: [ { {userId: String}, {comment: String} } ],
-//     likedBy: [ {userId: String} ],
-//     dislikedBy: [ {userId: String} ]
-// })
-
-// const userSchema = mongoose.Schema({
-//     followers: [ {userId: String} ],
-//     following: [ {userId: String} ],
-//     likes: [ {productId: String} ],
-//     dislikes: [ {productId: String} ]
-
-// })
-
-
