@@ -132,11 +132,32 @@ router.put('/:id', async (req, res) => {
     }
 });
 
+
+// delete item
+router.delete("/deleted/:id", async(req,res) => {
+    const deletedProduct = await Product.findByIdAndRemove(req.params.id);
+    res.redirect('/products');
+
+});
+
 // delete route
 router.delete('/:id', async (req, res) => {
-   const deletedProduct = await Product.findByIdAndRemove(req.params.id);
-   res.redirect('/products');
+   // const deletedProduct = await Product.findByIdAndRemove(req.params.id);
+   // res.redirect('/products');
+
+
+   // Implementing the new feature request - Akshay
+
+   const foundProduct = await  Product.findById(req.params.id);
+    res.render('products/delete.ejs', {
+    item: foundProduct,
+    currentUser: req.session.user
+}) 
+
+
 })
+
+
 
 
 // delete route

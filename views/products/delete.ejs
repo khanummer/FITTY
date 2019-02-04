@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <link href="https://fonts.googleapis.com/css?family=Major+Mono+Display" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header>
+    <h1>fitty</h1>
+</header>
+    <nav id="nav-bar">
+        <ul id="nav-bar-ul">
+            <br><li id="nav-bar-li"><a href="/"><img id="nav-bar-img" src="/images/home-button.png"></a></li><br>
+            <br><li id="nav-bar-li"><a href="/users"><img id="nav-bar-img" src="/images/search-button.png"></a></li><br>
+            <br><li id="nav-bar-li"><a href="/products"><img id="nav-bar-img" src="/images/products-button.png"></a></li><br>
+            <br><li id="nav-bar-li"><a href="/users/<%=currentUser._id%>"><img id="nav-bar-img" src="/images/profile-button.png"></button></a></li><br>
+        </ul>
+    </nav>
+
+
+<main>
+<img src="<%=item.image%>">
+<h2> are you sure you want to delete this product ? </h2>
+
+
+
+<form action="/products/deleted/<%=item._id%>?_method=DELETE" method="POST">
+<button type="submit">yes</button>
+</form><br>
+
+
+</main>
+
+
+
+
+
+</body>
+</html>
