@@ -10,7 +10,7 @@ router.get('/settings', async (req, res) => {
     const foundUser = await  User.findOne({username: req.session.username})
     res.render('users/settings.ejs', {
         user: foundUser,
-        currentUser: req.session.user
+        // currentUser: req.session.user
     }) 
     } catch (err) {
         res.send(Err);
@@ -24,7 +24,7 @@ router.get('/delete', async (req, res) => {
 const foundUser = await  User.findOne({username: req.session.username})
 res.render('users/delete.ejs', {
     user: foundUser,
-    currentUser: req.session.user
+    // currentUser: req.session.user
 }) 
 } catch (err) {
     res.send(Err);
@@ -68,7 +68,7 @@ router.post('/search', async (req, res) => {
         const allUsers = await User.find({username:  req.body.searchbarinput});
         res.render('users/index.ejs', {
             users: allUsers,
-            currentUser: req.session.user
+            // currentUser: req.session.user
 
 
         })
@@ -102,7 +102,7 @@ router.get('/:id', async (req, res) => {
     const foundUser = await User.findById(req.params.id).populate("products");
     res.render('users/show.ejs', {
         user: foundUser,
-        currentUser: req.session.user
+        // currentUser: req.session.user
 
     })
     } catch (err) {
@@ -119,7 +119,7 @@ router.get('/:id/edit', async (req, res) => {
         // console.log(foundUser);
         res.render('users/edit.ejs', {
             user: foundUser,
-            currentUser: req.session.user
+            // currentUser: req.session.user
         })
     } catch(err) {
         res.send(err);

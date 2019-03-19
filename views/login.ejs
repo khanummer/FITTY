@@ -1,31 +1,35 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title></title>
   <link href="https://fonts.googleapis.com/css?family=Major+Mono+Display" rel="stylesheet">
   <link rel="stylesheet" href="/css/style.css">
 </head>
-<body>
-<header>
-    <h1>fitty login page</h1>
-    <br><a href="/"><button>home</button></a><br>
-</header>
-currently logged in | <%= loggedUser %> |<br>
-<%= message %><br>
- 
- <h4> login </h4>
- <form action="/users/login" method="POST">
-    <input type="text" name="username" placeholder="username"><br>
-    <input type="password" name="password" placeholder="password"><br>
-    <button type="submit">login</button><br>
-</form>
 
-<h4> register </h4>
-<form action="/users/registration" method="POST">
-    <input type="text" name="username" placeholder="username"><br>
-    <input type="password" name="password" placeholder="password"><br>
-    <button type="submit">register</button><br>
-</form>
+<body>
+
+    <header>
+        <h1>fitty login page</h1>
+        <br><a href="/"><button>home</button></a><br>
+    </header>
+
+    currently logged in | <%= loggedUser %> |<br>
+    <%= message %><br>
+ 
+    <h4> login </h4>
+    <form action="/users/login" method="POST">
+        <input type="text" name="username" placeholder="username"><br>
+        <input type="password" name="password" placeholder="password"><br>
+        <button type="submit">login</button><br>
+    </form>
+
+    <h4> register </h4>
+    <form action="/users/registration" method="POST">
+        <input type="text" name="username" placeholder="username"><br>
+        <input type="password" name="password" placeholder="password"><br>
+        <button type="submit">register</button><br>
+    </form>
+
 </body>
 </html>
-

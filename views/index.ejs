@@ -1,57 +1,60 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title></title>
   <link href="https://fonts.googleapis.com/css?family=Major+Mono+Display" rel="stylesheet">
   <link rel="stylesheet" href="/css/style.css">
 </head>
+
 <body>
-<header>
-    <h1>fitty</h1>
-</header>
+
+    <header>
+        <h1>fitty</h1>
+    </header>
+
     <nav id="nav-bar">
         <ul id="nav-bar-ul">
             <br><li id="nav-bar-li"><a href="/"><img id="nav-bar-img" src="/images/home-button.png"></a></li><br>
             <br><li id="nav-bar-li"><a href="/users"><img id="nav-bar-img" src="/images/search-button.png"></a></li><br>
             <br><li id="nav-bar-li"><a href="/products"><img id="nav-bar-img" src="/images/products-button.png"></a></li><br>
-            <br><li id="nav-bar-li"><a href="/users"><img id="nav-bar-img" src="/images/profile-button.png"></button></a></li><br>
+            <br><li id="nav-bar-li"><a href="/users"><img id="nav-bar-img" src="/images/profile-button.png"></a></li><br>
         </ul>
     </nav>
 
+    <main>
 
-<main>
-<%= message %><br>
-<%= loggedUser %>
-<h4> login </h4>
-<form action="/users/login" method="POST">
-   <input type="text" name="username" placeholder="username"><br>
-   <input type="password" name="password" placeholder="password"><br>
-   <button type="submit">login</button><br>
-</form>
+        <%= message %><br>
+        <%= loggedUser %>
 
-<h4> register </h4>
-<form action="/users/registration" method="POST">
-   <input type="text" name="username" placeholder="username"><br>
-   <input type="password" name="password" placeholder="password"><br>
-   <input type="text" name="profilePic" placeholder="profile picture"><br>
-   bio <br><br> <textarea name="bio"></textarea><br>
-   <button type="submit">register</button><br>
-<br>
-</form>
+        <h4> login </h4>
 
-<form action="/users/logout" method="POST">
-    <button type="submit">logout</button>
-</form><br>
+        <form action="/users/login" method="POST">
+            <input type="text" name="username" placeholder="username"><br>
+            <input type="password" name="password" placeholder="password"><br>
+            <button type="submit">login</button><br>
+        </form>
 
+        <h4> register </h4>
 
+        <form action="/users/registration" method="POST">
+            <input type="text" name="username" placeholder="username"><br>
+            <input type="password" name="password" placeholder="password"><br>
+            <input type="text" name="profilePic" placeholder="profile picture"><br>
+            bio <br><br> <textarea name="bio"></textarea><br>
+            <button type="submit">register</button><br>
+            <br>
+        </form>
 
-<a href="/users/settings"><img id="settings" src="/images/settings-button.png"></button></a>
-
-</main>
+        <form action="/users/logout" method="POST">
+            <button type="submit">logout</button>
+        </form><br>
 
 
 
+        <a href="/users/settings"><img id="settings" src="/images/settings-button.png"></button></a>
 
+    </main>
 
 </body>
 </html>
