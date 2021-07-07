@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
 
-// const connectionString = 'mongodb://localhost/fitty';
-const connectionString = process.env.DATABASE_URL
+// For testing; was not able to connect to database with the other connection string - Akshay
+const connectionString = 'mongodb://localhost/fitty';
+// const connectionString = process.env.DATABASE_URL
 
 mongoose.connect(connectionString, {
     useNewUrlParser: true,
